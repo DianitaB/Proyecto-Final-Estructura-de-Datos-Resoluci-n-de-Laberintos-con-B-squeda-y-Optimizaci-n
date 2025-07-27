@@ -1,4 +1,4 @@
-![Logo de la universidad](LOGO.png)
+![Logo de la universidad](Logo.png)
 # Universidad Politécnica Salesiana
 
 ## Carrera de Computación
@@ -66,7 +66,6 @@ El proyecto consiste en representar un laberinto utilizando estructuras de datos
 -
 
 ## 5. Recomendaciones y aplicaciones futuras.
--
 -
 -
 -
