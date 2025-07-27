@@ -1,41 +1,41 @@
 package models;
 
-import java.util.Objects;
-
 public class Cell {
-    public int row;
-    public int col;
+    private int fila;
+    private int columna;
+    private CellState estado;
 
-    public  Cell(int row, int col) {
-        this.row = row;
-        this.col = col;
-    }
-    public int getRow() {
-        return row;
+    public Cell(int fila, int columna, CellState estado) {
+        this.fila = fila;
+        this.columna = columna;
+        this.estado = estado;
     }
 
-    public int getCol() {
-        return col;
+    public int getFila() {
+        return fila;
+    }
+
+    public int getColumna() {
+        return columna;
+    }
+
+    public CellState getEstado() {
+        return estado;
+    }
+
+    public void setEstado(CellState estado) {
+        this.estado = estado;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cell celda = (Cell) o;
-        return row == celda.row && col == celda.col;
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Cell)) return false;
+        Cell otra = (Cell) obj;
+        return this.fila == otra.fila && this.columna == otra.columna;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(row, col);
-    }
-
-    @Override
-    public String toString() {
-        return "Celda{" +
-                row +
-                "," + col +
-                '}';
+        return fila * 31 + columna;
     }
 }
