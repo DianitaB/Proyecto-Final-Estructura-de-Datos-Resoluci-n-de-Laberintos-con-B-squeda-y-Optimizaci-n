@@ -36,3 +36,4 @@ public class ResultsDialog extends JDialog {
         add(panelBtn, BorderLayout.SOUTH);
     }
 }
+

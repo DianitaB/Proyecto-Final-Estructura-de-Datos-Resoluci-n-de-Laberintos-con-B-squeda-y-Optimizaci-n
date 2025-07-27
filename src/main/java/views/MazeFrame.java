@@ -13,7 +13,7 @@ public class MazeFrame extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
-        getContentPane().setBackground(new Color(250, 248, 240)); // Fondo beige claro
+        getContentPane().setBackground(new Color(250, 248, 240)); 
         setJMenuBar(crearMenu());
 
         pedirDimensiones();
@@ -25,14 +25,35 @@ public class MazeFrame extends JFrame {
     }
 
     private JMenuBar crearMenu() {
-        JMenuBar menuBar = new JMenuBar();
-        JMenu menuArchivo = new JMenu("Archivo");
-        JMenu menuAyuda = new JMenu("Ayuda");
-        menuArchivo.add(new JMenuItem("Salir"));
-        menuBar.add(menuArchivo);
-        menuBar.add(menuAyuda);
-        return menuBar;
-    }
+    JMenuBar menuBar = new JMenuBar();
+
+    JMenu menuArchivo = new JMenu("Archivo");
+    JMenuItem salirItem = new JMenuItem("Salir");
+    salirItem.addActionListener(e -> System.exit(0));
+    menuArchivo.add(salirItem);
+
+    JMenu menuAyuda = new JMenu("Ayuda");
+    JMenuItem autoresItem = new JMenuItem("Acerca de los autores");
+    autoresItem.addActionListener(e -> {
+        String mensaje = """
+                Proyecto: Laberinto 
+                Autores:
+                - Valeria Borja - DianitaB
+                - Keyra Carvajal - KeyraCarvajajl
+                - Bryan Barros - Bryan-BarrosV
+                - Erika Collaguazo - Erika-colla
+
+                ¡Gracias por utilizar nuestra aplicación!
+                """;
+        JOptionPane.showMessageDialog(this, mensaje, "Información del Proyecto", JOptionPane.INFORMATION_MESSAGE);
+    });
+    menuAyuda.add(autoresItem);
+
+    menuBar.add(menuArchivo);
+    menuBar.add(menuAyuda);
+    return menuBar;
+}
+
 
     private int filas, columnas;
 
@@ -45,16 +66,16 @@ public class MazeFrame extends JFrame {
         JPanel lateral = new JPanel();
         lateral.setLayout(new BoxLayout(lateral, BoxLayout.Y_AXIS));
         lateral.setPreferredSize(new Dimension(180, 0));
-        lateral.setBackground(new Color(240, 235, 220)); // Beige más oscuro
+        lateral.setBackground(new Color(240, 235, 220)); 
         lateral.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
 
-        JLabel lbl = new JLabel("🎯 MODO");
+        JLabel lbl = new JLabel("");
         lbl.setFont(new Font("Verdana", Font.BOLD, 16));
         lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton btnInicio = crearBotonPlano("🟢 Inicio", new Color(34, 139, 34));
-        JButton btnFin = crearBotonPlano("🔴 Fin", new Color(178, 34, 34));
-        JButton btnMuro = crearBotonPlano("⬛ Muro", Color.DARK_GRAY);
+        JButton btnInicio = crearBotonPlano("Set Start", new Color(34, 139, 34));
+        JButton btnFin = crearBotonPlano("Set End", new Color(178, 34, 34));
+        JButton btnMuro = crearBotonPlano("Toggle Wall", Color.DARK_GRAY);
 
         btnInicio.addActionListener(e -> mazePanel.setModo("START"));
         btnFin.addActionListener(e -> mazePanel.setModo("END"));
@@ -86,11 +107,11 @@ public class MazeFrame extends JFrame {
         JPanel inferior = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 12));
         inferior.setBackground(new Color(235, 232, 222));
 
-        JComboBox<String> combo = new JComboBox<>(new String[]{"Recursivo", "BFS", "DFS"});
+        JComboBox<String> combo = new JComboBox<>(new String[]{"Recursivo", "Recursivo Completo", "Recursivo Completo BT", "BFS", "DFS","Backtracking"});
         combo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        JButton btnResolver = crearBotonPlano("🧠 Resolver", new Color(60, 179, 113));
-        JButton btnPaso = crearBotonPlano("👣 Paso a paso", new Color(255, 165, 0));
-        JButton btnLimpiar = crearBotonPlano("🧼 Limpiar", new Color(105, 105, 105));
+        JButton btnResolver = crearBotonPlano("Resolver", new Color(60, 179, 113));
+        JButton btnPaso = crearBotonPlano("Paso a paso", new Color(255, 165, 0));
+        JButton btnLimpiar = crearBotonPlano("Limpiar", new Color(105, 105, 105));
 
         btnLimpiar.addActionListener(e -> mazePanel.limpiar());
         btnResolver.addActionListener(e -> new ResultsDialog(this, 23, 119).setVisible(true));
