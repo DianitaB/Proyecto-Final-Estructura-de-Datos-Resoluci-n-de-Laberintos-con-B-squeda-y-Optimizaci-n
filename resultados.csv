@@ -1,14 +1,1 @@
-Algoritmo;Pasos;Tiempo(ms);Fecha
-Recursivo;7;0;2025-07-27
-Recursivo 4D + BT;7;1;2025-07-27
-Recursivo 4D + BT;7;1;2025-07-27
-Recursivo 4D + BT;7;0;2025-07-27
-Recursivo;7;1;2025-07-27
-Recursivo;7;0;2025-07-27
-Recursivo;7;2;2025-07-27
-BFS;7;0;2025-07-27
-Recursivo 4D;0;0;2025-07-27
-Recursivo;7;0;2025-07-27
-BFS;7;0;2025-07-27
-Recursivo 4D;9;0;2025-07-27
-Recursivo;40;1;2025-07-27
+Algoritmo,Celdas Camino,Tiempo (ns),Fecha
